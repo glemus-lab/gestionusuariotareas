@@ -1,0 +1,33 @@
+services:
+  # 1. BASE DE DATOS (SQL Server)
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: Practica-db
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Pass#1234
+      - MSSQL_PID=Developer
+      - TZ=America/El_Salvador
+    ports:
+      - "1433:1433"
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P Pass#1234 -Q 'SELECT 1' -C || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # 2. API
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: Practica-api
+    ports:
+      - "8080:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sql-server;Database=GestionUsuarioTareas;User Id=sa;Password=Pass#1234;TrustServerCertificate=True;
+      - TZ=America/El_Salvador
+    depends_on:
+      sql-server:
+        condition: service_healthy

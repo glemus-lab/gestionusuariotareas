@@ -1,0 +1,6 @@
+@GestionUsuarioTareas_HostAddress = http://localhost:5031
+
+GET {{GestionUsuarioTareas_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

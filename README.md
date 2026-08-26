@@ -46,11 +46,11 @@ El proyecto está diseñado para inicializarse por completo con un solo comando,
 
 2. Ejecute el siguiente comando para compilar las imágenes e iniciar los servicios:
 
-&#x20;  ```bash
+```
+bash
 
-&#x20;  docker compose up --build
-
-&#x20;  ```
+docker compose up --build
+```
 
 3. El sistema encenderá el motor de SQL Server, compilará las capas y aplicará de forma automática el esquema de la base de datos.
 
@@ -62,7 +62,7 @@ De acuerdo a las especificaciones técnicas requeridas, la documentación intera
 
 *   **Documentación Swagger UI:** [http://localhost:8080/api-docs](http://localhost:8080/api-docs)
 
-*   **JSON de OpenAPI Nativo:** `http://localhost:8080/openapi/v1.json`
+*   **JSON de OpenAPI Nativo:** [http://localhost:8080/openapi/v1.json](http://localhost:8080/openapi/v1.json)
 
 ### Mapa de Rutas RESTful Implementadas
 

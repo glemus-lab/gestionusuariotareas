@@ -88,3 +88,8 @@ De acuerdo a las especificaciones técnicas requeridas, la documentación intera
 
 *   `DELETE /api/tareas/{id}` - Eliminar una tarea de forma independiente.
 
+### Postman
+
+Se incluye una colección de Postman en la raíz del proyecto (`GestionUsuarioTarea.postman_collection.json`) con todos los endpoints configurados para facilitar las pruebas de la API.
+
+

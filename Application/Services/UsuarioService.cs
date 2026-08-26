@@ -32,6 +32,9 @@ namespace Application.Services
             if (errores.Count > 0)
                 return Result<int>.Fail("Errores de validación.", 400, errores);
 
+            if (await _repository.ExisteCorreoDeUsuario(0, usuarioDto.Email))
+                return Result<int>.Fail("El correo electrónica ya existe", 400, errores);
+
             var resultUsuario = Usuario.Crear(usuarioDto.Nombre, usuarioDto.Email);
 
             if (!resultUsuario.Success)
@@ -75,6 +78,9 @@ namespace Application.Services
 
             if (errores.Count > 0)
                 return Result.Fail("Errores de validación.", 400, errores);
+
+            if (await _repository.ExisteCorreoDeUsuario(usuarioDto.Id, usuarioDto.Email))
+                return Result.Fail("El correo electrónica ya existe", 400, errores);
 
             var usuario = await _repository.GetByIdAsync(usuarioDto.Id, ct);
 

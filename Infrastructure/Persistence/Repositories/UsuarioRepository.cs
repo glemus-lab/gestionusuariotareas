@@ -55,5 +55,14 @@ namespace Infrastructure.Persistence.Repositories
         /// <param name="usuario"><see cref="Usuario"/> a eliminar</param>
         public void Delete(Usuario usuario)
             => _dbSet.Remove(usuario);
+
+        /// <summary>
+        /// Método que sirve para verificar si ya existe el correo electronico registrado
+        /// </summary>
+        /// <param name="id">Id de usuario</param>
+        /// <param name="email">Correo a verificar</param>
+        /// <returns>Verdadero si ya existe el correo</returns>
+        public Task<bool> ExisteCorreoDeUsuario(int id, string email)
+            => _dbSet.AnyAsync(s => s.Id != id && s.Email.Equals(email));
     }
 }

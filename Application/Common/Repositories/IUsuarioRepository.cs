@@ -33,5 +33,13 @@ namespace Application.Common.Repositories
         /// </summary>
         /// <param name="usuario"><see cref="Usuario"/> a eliminar</param>
         void Delete(Usuario usuario);
+
+        /// <summary>
+        /// Método que sirve para verificar si ya existe el correo electronico registrado
+        /// </summary>
+        /// <param name="id">Id de usuario</param>
+        /// <param name="email">Correo a verificar</param>
+        /// <returns>Verdadero si ya existe el correo</returns>
+        Task<bool> ExisteCorreoDeUsuario(int id, string email);
     }
 }

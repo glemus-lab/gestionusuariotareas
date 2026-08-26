@@ -31,8 +31,8 @@ namespace GestionUsuarioTareas.Controllers
         /// <returns></returns>
         /// <response code="200">Retorna un objeto result con un objeto que contiene el id, nombre y correo del usuario</response>
         /// <response code="404">Retorna un objeto result cuando el usuario no existe</response>
-        [ProducesResponseType(typeof(Result<UsuarioDto>), 200)]
-        [ProducesResponseType(typeof(Result<UsuarioDto>), 404)]
+        [ProducesResponseType<Result<UsuarioDto>>(StatusCodes.Status200OK)]
+        [ProducesResponseType<Result<UsuarioDto>>(StatusCodes.Status404NotFound)]
         [HttpGet("{id}")]
         public async Task<IActionResult> Details(int id, CancellationToken ct = default)
         {
@@ -48,8 +48,8 @@ namespace GestionUsuarioTareas.Controllers
         /// <returns>Retorna un objeto Result con el Id del usuario recien creado</returns>
         /// <response code="201">Retorna el id del usuario creado exitosamente</response>
         /// <response code="400">Si los datos no son validos</response>
-        [ProducesResponseType(typeof(Result<int>), 201)]
-        [ProducesResponseType(typeof(Result<int>), 400)]
+        [ProducesResponseType<Result<int>>(StatusCodes.Status201Created)]
+        [ProducesResponseType<Result<int>>(StatusCodes.Status400BadRequest)]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CrearUsuarioDto dto, CancellationToken ct = default)
         {
@@ -67,9 +67,9 @@ namespace GestionUsuarioTareas.Controllers
         /// <response code="200">Retorna el objeto Result cuando la operación fue exitosa</response>
         /// <response code="400">Retorna el objeto Result con los mensajes de error</response>
         /// <response code="404">Retorna el objeto Result cuando el usuario no existe</response>
-        [ProducesResponseType(typeof(Result), 200)]
-        [ProducesResponseType(typeof(Result), 400)]
-        [ProducesResponseType(typeof(Result), 404)]
+        [ProducesResponseType<Result>(StatusCodes.Status200OK)]
+        [ProducesResponseType<Result>(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType<Result>(StatusCodes.Status404NotFound)]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] ActualizarUsuarioDto dto, CancellationToken ct = default)
         {
@@ -88,8 +88,8 @@ namespace GestionUsuarioTareas.Controllers
         /// <returns>Retorna un objeto result para verificar el estado de la transacción</returns>
         /// <response code="200">Retorna el objeto Result cuando la operación fue exitosa</response>
         /// <response code="404">Retorna el objeto Result cuando el usuario no existe</response>
-        [ProducesResponseType(typeof(Result), 200)]
-        [ProducesResponseType(typeof(Result), 404)]
+        [ProducesResponseType<Result>(StatusCodes.Status200OK)]
+        [ProducesResponseType<Result>(StatusCodes.Status404NotFound)]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id, CancellationToken ct = default)
         {

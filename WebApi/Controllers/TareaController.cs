@@ -30,7 +30,7 @@ namespace GestionUsuarioTareas.Controllers
         /// <param name="ct">Token de cancelación</param>
         /// <returns>Retorna un objeto Result con un listado de tareas</returns>
         /// <response code="200">Retrona Result con el listado de tareas del usuario</response>
-        [ProducesResponseType(typeof(Result<List<TareaDto>>), 200)]
+        [ProducesResponseType<Result<List<TareaDto>>>(StatusCodes.Status200OK)]
         [HttpGet("usuario/{id}")]
         public async Task<IActionResult> Details(int id, CancellationToken ct = default)
         {
@@ -47,9 +47,9 @@ namespace GestionUsuarioTareas.Controllers
         /// <response code="201">Retorna el id de la tarea creada exitosamente</response>
         /// <response code="400">Si los datos no son validos</response>
         /// <response code="404">Si el id del usuario no existe</response>
-        [ProducesResponseType(typeof(Result<int>), 201)]
-        [ProducesResponseType(typeof(Result<int>), 400)]
-        [ProducesResponseType(typeof(Result<int>), 404)]
+        [ProducesResponseType<Result<int>>(StatusCodes.Status201Created)]
+        [ProducesResponseType<Result<int>>(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType<Result<int>>(StatusCodes.Status404NotFound)]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CrearTareaDto dto, CancellationToken ct = default)
         {
@@ -67,9 +67,9 @@ namespace GestionUsuarioTareas.Controllers
         /// <response code="200">Si la operación fue exitosa</response>
         /// <response code="400">Si los datos no son validos</response>
         /// <response code="404">Si la tarea no existe</response>
-        [ProducesResponseType(typeof(Result), 200)]
-        [ProducesResponseType(typeof(Result), 400)]
-        [ProducesResponseType(typeof(Result), 404)]
+        [ProducesResponseType<Result>(StatusCodes.Status200OK)]
+        [ProducesResponseType<Result>(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType<Result>(StatusCodes.Status404NotFound)]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] ActualizarTareaDto dto, CancellationToken ct = default)
         {
@@ -88,8 +88,8 @@ namespace GestionUsuarioTareas.Controllers
         /// <returns>Retorna un objeto Result para indicar el estado de la transacción</returns>
         /// <response code="200">Si la operación fue exitosa</response>
         /// <response code="404">Si la la tarea no existe</response>
-        [ProducesResponseType(typeof(Result), 200)]
-        [ProducesResponseType(typeof(Result), 404)]
+        [ProducesResponseType<Result>(StatusCodes.Status200OK)]
+        [ProducesResponseType<Result>(StatusCodes.Status404NotFound)]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id, CancellationToken ct = default)
         {

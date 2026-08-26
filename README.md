@@ -68,7 +68,7 @@ De acuerdo a las especificaciones técnicas requeridas, la documentación intera
 
 #### 👥 Gestión de Usuarios (`api/usuarios`)
 
-*   `POST /api/usuarios` - Crear un usuario (Valida formato y correos duplicados).
+*   `POST /api/usuarios` - Crear un usuario
 
 *   `GET /api/usuarios/{id}` - Obtener el detalle de un usuario.
 
